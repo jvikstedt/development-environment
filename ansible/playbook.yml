@@ -1,0 +1,12 @@
+- hosts: all
+  vars_prompt:
+    - name: "password"
+      prompt: "Enter password"
+      private: yes
+  roles:
+    - apps
+    - git
+    - zsh
+    - pyenv
+    - neovim
+    - tmux

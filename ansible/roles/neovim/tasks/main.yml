@@ -1,0 +1,33 @@
+- name: Add unstable nvim repo
+  become: yes
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+    state: present
+
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install Neovim
+  become: yes
+  apt:
+    name: neovim
+    state: present
+
+- name: Make sure .config directory exists
+  file:
+    path: ~/.config
+    state: directory
+
+- name: Symlink vimrc to init.vim file
+  file:
+    src: ~/development-environment/dotfiles/vim/vimrc
+    dest: ~/development-environment/dotfiles/vim/init.vim
+    state: link
+
+- name: Symlink vim folder under ~/.config
+  file:
+    src: ~/development-environment/dotfiles/vim
+    dest: ~/.config/nvim
+    state: link

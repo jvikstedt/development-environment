@@ -1,0 +1,16 @@
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install tmux
+  become: yes
+  apt:
+    name: tmux
+    state: present
+
+- name: Symlink for tmux.conf
+  file:
+    src: ~/development-environment/dotfiles/tmux/tmux.conf
+    dest: ~/.tmux.conf
+    state: link

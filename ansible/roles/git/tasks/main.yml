@@ -1,0 +1,16 @@
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install git
+  become: yes
+  apt:
+    name: git
+    state: present
+
+- name: Set git configs
+  shell: |
+    git config --global core.excludesfile '~/development-environment/dotfiles/git/gitignore_global'
+    git config --global init.templatedir '~/development-environment/dotfiles/git/git_template'
+    git config --global alias.glog "log --all --pretty='format:%d %Cgreen%h%Creset %an - %s' --graph"

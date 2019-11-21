@@ -1,0 +1,19 @@
+- name: Add synapse repo
+  become: yes
+  apt_repository:
+    repo: ppa:synapse-core/testing
+    state: present
+
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install a list of packages
+  become: yes
+  apt:
+    pkg:
+    - silversearcher-ag
+    - xclip
+    - synapse
+    state: present

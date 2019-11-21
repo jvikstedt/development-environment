@@ -1,0 +1,24 @@
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install zsh
+  become: yes
+  apt:
+    name: zsh
+    state: present
+
+- name: Set default shell to zsh
+  shell: printf "{{ password }}\n" | chsh -s /usr/bin/zsh
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Ensure custom zshrc is sourced
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '^source ~\/development-environment\/dotfiles\/zshrc$'
+    line: source ~/development-environment/dotfiles/zshrc

@@ -1,0 +1,22 @@
+- name: apt-get update
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install xterm
+  become: yes
+  apt:
+    name: xterm
+    state: present
+
+- name: Symlink for .Xdefaults
+  file:
+    src: ~/development-environment/dotfiles/term/Xdefaults
+    dest: ~/.Xdefaults
+    state: link
+
+- name: Symlink for .inputrc
+  file:
+    src: ~/development-environment/dotfiles/term/inputrc
+    dest: ~/.inputrc
+    state: link

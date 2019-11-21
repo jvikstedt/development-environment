@@ -1,0 +1,176 @@
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/home/jvikstedt/.pyenv/shims/python3'
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+Plug 'morhetz/gruvbox'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'w0rp/ale'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'carlitux/deoplete-ternjs'
+"Plug 'mhartington/nvim-typescript', {'do': './install.sh', 'for': 'typescript' }
+
+" Syntax highlighting
+Plug 'mfukar/robotframework-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
+Plug 'slim-template/vim-slim'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
+call plug#end()
+
+" Colorscheme
+set background=dark
+colorscheme gruvbox
+
+" Map leader key to space
+noremap <Space> <NOP>
+let mapleader = " "
+
+" Gitgutter
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
+" CTRL+Arrows to resize splits
+nnoremap <C-left> :vertical resize -5<cr>
+nnoremap <C-down> :resize +5<cr>
+nnoremap <C-up> :resize -5<cr>
+nnoremap <C-right> :vertical resize +5<cr>
+
+" Typos
+command WQ wq
+command Wq wq
+command W w
+command Q q
+nnoremap K <NOP>
+
+" Undo & history & swp files
+set undofile
+set undodir=~/.vim/undodir//
+set history=1000
+set backupdir=~/.vim/backupdir//
+set directory=~/.vim/swapfiles//
+
+" Show column 80
+set colorcolumn=80
+
+" Buffer buffer
+set hidden
+"map <C-c> :bd<cr>
+nnoremap <C-c> :bp\|bd #<CR>
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set completeopt+=noselect
+
+" FZF
+nnoremap <C-p> :Files<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>s :GFiles?<CR>
+nmap <Leader>c :Commits<CR>
+nmap <Leader>r :History:<CR>
+nmap gs :Gstatus<CR>
+nmap gc :Gcommit<CR>
+
+" Linenumbers
+set relativenumber
+set number
+
+" Encodings
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Timeouts
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" Search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Matching bracket
+set showmatch
+
+" Error Sounds
+set noerrorbells
+set novisualbell
+
+" Scroll
+set scrolloff=8
+set sidescrolloff=15
+set lazyredraw
+
+" Wildmenu
+set wildmode=longest,list,full
+set wildmenu
+
+set list listchars=tab:>-,trail:~,extends:>,precedes:<,nbsp:+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
+" Tags
+noremap <leader>g <C-]>
+noremap <leader>f g]
+
+set ts=2
+set shiftwidth=2
+set expandtab
+set nostartofline
+
+" From terminal mode to normal mode with esc
+"tnoremap <ESC> <C-\><C-n>
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'go': ['gofmt', 'golint', 'govet', 'gobuild', 'gopls'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+" Enable jsx for .js files also
+let g:jsx_ext_required = 0
+
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'vue',
+                \ ]
+
+" Search for word under cursor
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
