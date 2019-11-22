@@ -1,5 +1,5 @@
-let g:python_host_prog='/usr/bin/python2'
-let g:python3_host_prog='/home/jvikstedt/.pyenv/shims/python3'
+" let g:python_host_prog='/usr/bin/python2'
+" let g:python3_host_prog=$HOME"/.pyenv/shims/python"
 
 call plug#begin('~/.vim/plugged')
 
