@@ -31,3 +31,9 @@
     src: ~/development-environment/dotfiles/vim
     dest: ~/.config/nvim
     state: link
+
+- name: Symlink vim folder under ~/.vim
+  file:
+    src: ~/development-environment/dotfiles/vim
+    dest: ~/.vim
+    state: link

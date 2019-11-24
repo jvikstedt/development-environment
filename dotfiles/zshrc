@@ -18,6 +18,7 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 export PATH=$PATH:$HOME/dotfiles/bin
 export PATH=node_modules/.bin:$PATH
+export PYENV_ROOT=$HOME/.pyenv
 
 # VI-mode
 bindkey -v

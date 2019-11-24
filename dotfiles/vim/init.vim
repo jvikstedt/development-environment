@@ -1,1 +1,0 @@
-/home/vagrant/development-environment/dotfiles/vim/vimrc
