@@ -17,6 +17,16 @@
   args:
     creates: ~/.oh-my-zsh
 
+- name: Install zsh-syntax-highlighting plugin
+  shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  args:
+    creates: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+- name: Install zsh-autosuggestions plugin
+  shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  args:
+    creates: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
 - name: Make sure .zshrc_custom file exists
   file:
     path: ~/.zshrc_custom
