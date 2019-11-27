@@ -3,6 +3,17 @@
   apt:
     update_cache: yes
 
+- name: Make sure .zshrc_custom file exists
+  file:
+    path: ~/.zshrc_custom
+    state: file
+
+- name: Symlink zshrc to .zshrc file
+  file:
+    src: ~/development-environment/dotfiles/zshrc
+    dest: ~/.zshrc
+    state: link
+
 - name: Install zsh
   become: yes
   apt:
@@ -26,14 +37,3 @@
   shell: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
   args:
     creates: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
-- name: Make sure .zshrc_custom file exists
-  file:
-    path: ~/.zshrc_custom
-    state: file
-
-- name: Symlink zshrc to .zshrc file
-  file:
-    src: ~/development-environment/dotfiles/zshrc
-    dest: ~/.zshrc
-    state: link
