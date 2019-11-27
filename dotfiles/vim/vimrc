@@ -10,7 +10,7 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -42,7 +42,7 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox8
 
 " Map leader key to space
 noremap <Space> <NOP>
