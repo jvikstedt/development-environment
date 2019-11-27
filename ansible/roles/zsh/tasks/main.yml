@@ -17,8 +17,13 @@
   args:
     creates: ~/.oh-my-zsh
 
-- name: Ensure custom zshrc is sourced
-  lineinfile:
-    path: ~/.zshrc
-    regexp: '^source ~\/development-environment\/dotfiles\/zshrc$'
-    line: source ~/development-environment/dotfiles/zshrc
+- name: Make sure .zshrc_custom file exists
+  file:
+    path: ~/.zshrc_custom
+    state: file
+
+- name: Symlink zshrc to .zshrc file
+  file:
+    src: ~/development-environment/dotfiles/zshrc
+    dest: ~/.zshrc
+    state: link
