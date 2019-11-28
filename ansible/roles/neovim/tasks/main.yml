@@ -37,3 +37,25 @@
     src: ~/development-environment/dotfiles/vim
     dest: ~/.vim
     state: link
+
+- name: Create virtualenv for neovim2
+  shell: |
+    pyenv virtualenv 2.7.11 neovim2
+  args:
+    creates: ~/.pyenv/versions/neovim2
+
+- name: Create virtualenv for neovim3
+  shell: |
+    pyenv virtualenv 3.4.4 neovim3
+  args:
+    creates: ~/.pyenv/versions/neovim3
+
+- name: Install neovim2 environment pynvim and neovim packages
+  shell: |
+    pyenv activate neovim2
+    pip install pynvim neovim
+
+- name: Install neovim3 environment pynvim and neovim packages
+  shell: |
+    pyenv activate neovim3
+    pip install pynvim neovim
