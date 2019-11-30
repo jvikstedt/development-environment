@@ -6,7 +6,7 @@
 - name: Make sure .zshrc_custom file exists
   file:
     path: ~/.zshrc_custom
-    state: file
+    state: touch
 
 - name: Symlink zshrc to .zshrc file
   file:
