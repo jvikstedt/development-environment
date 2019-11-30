@@ -3,17 +3,6 @@
   apt:
     update_cache: yes
 
-- name: Make sure .zshrc_custom file exists
-  file:
-    path: ~/.zshrc_custom
-    state: touch
-
-- name: Symlink zshrc to .zshrc file
-  file:
-    src: ~/development-environment/dotfiles/zshrc
-    dest: ~/.zshrc
-    state: link
-
 - name: Install zsh
   become: yes
   apt:
@@ -27,6 +16,18 @@
   shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
+
+- name: Make sure .zshrc_custom file exists
+  file:
+    path: ~/.zshrc_custom
+    state: touch
+
+- name: Symlink zshrc to .zshrc file
+  file:
+    src: ~/development-environment/dotfiles/zshrc
+    dest: ~/.zshrc
+    state: link
+    force: yes
 
 - name: Install zsh-syntax-highlighting plugin
   shell: git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
