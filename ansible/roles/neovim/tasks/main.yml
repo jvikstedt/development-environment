@@ -40,13 +40,13 @@
 
 - name: Create virtualenv for neovim2
   shell: |
-    pyenv virtualenv 2.7.11 neovim2
+    pyenv virtualenv 2.7.17 neovim2
   args:
     creates: ~/.pyenv/versions/neovim2
 
 - name: Create virtualenv for neovim3
   shell: |
-    pyenv virtualenv 3.4.4 neovim3
+    pyenv virtualenv 3.6.6 neovim3
   args:
     creates: ~/.pyenv/versions/neovim3
 
