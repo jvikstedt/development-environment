@@ -51,11 +51,7 @@
     creates: ~/.pyenv/versions/neovim3
 
 - name: Install neovim2 environment pynvim and neovim packages
-  shell: |
-    pyenv activate neovim2
-    pip install pynvim neovim
+  shell: ~/.pyenv/versions/neovim2/bin/pip install pynvim neovim
 
 - name: Install neovim3 environment pynvim and neovim packages
-  shell: |
-    pyenv activate neovim3
-    pip install pynvim neovim
+  shell: ~/.pyenv/versions/neovim3/bin/pip install pynvim neovim
