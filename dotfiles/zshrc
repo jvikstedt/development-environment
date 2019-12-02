@@ -138,5 +138,8 @@ eval "$(pyenv virtualenv-init -)"
 export NVM_DIR=$HOME/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # All custom zshrc commands in $HOME/.zshrc_custom
 source $HOME/.zshrc_custom
