@@ -55,3 +55,9 @@
 
 - name: Install neovim3 environment pynvim and neovim packages
   shell: ~/.pyenv/versions/neovim3/bin/pip install pynvim neovim
+
+- name: Install neovim node package
+  shell: |
+    npm install -g neovim
+  args:
+    creates: ~/.nvm/versions/node/v12.13.1/lib/node_modules/neovim
