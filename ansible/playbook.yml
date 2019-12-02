@@ -9,6 +9,7 @@
     - zsh
     - pyenv
     - nvm
+    - fzf
     - neovim
     - tmux
     - term
