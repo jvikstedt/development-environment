@@ -3,6 +3,7 @@ env
 .tern-project
 .tern-port
 .agignore
+.vim
 
 *.swp
 *.swo
