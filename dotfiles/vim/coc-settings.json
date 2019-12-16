@@ -1,4 +1,5 @@
 {
+  "diagnostic.signOffset": 9999999,
   "languageserver": {
     "golang": {
       "command": "gopls",
