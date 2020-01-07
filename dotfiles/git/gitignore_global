@@ -4,6 +4,7 @@ env
 .tern-port
 .agignore
 .vim
+compile_commands.json
 
 *.swp
 *.swo
