@@ -23,9 +23,7 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax highlighting
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
