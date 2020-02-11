@@ -50,6 +50,7 @@ command QW wq
 command Qw wq
 command W w
 command Q q
+command Qa qa
 nnoremap K <NOP>
 
 " Undo & history & swp files

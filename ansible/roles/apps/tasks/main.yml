@@ -15,5 +15,4 @@
     pkg:
     - silversearcher-ag
     - xclip
-    - synapse
     state: present
