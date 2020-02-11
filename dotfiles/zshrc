@@ -119,6 +119,8 @@ alias vim='nvim'
 bindkey -v
 KEYTIMEOUT=1
 
+bindkey -v '^?' backward-delete-char
+
 # PYENV
 export PYENV_ROOT=$HOME/.pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
