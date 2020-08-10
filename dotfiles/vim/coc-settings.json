@@ -1,5 +1,10 @@
 {
   "diagnostic.signOffset": 9999999,
+  "eslint.filetypes": [
+    "typescript",
+    "javascript",
+    "vue"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
