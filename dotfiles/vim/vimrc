@@ -7,10 +7,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
+Plug 'rbong/vim-crystalline'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -29,7 +28,6 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-" colorscheme gruvbox
 colorscheme gruvbox8
 
 " Map leader key to space
@@ -171,9 +169,6 @@ command! -nargs=0 Format :call CocAction('format')
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
@@ -181,3 +176,14 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
+
+" Status bar
+function! StatusLine(...)
+  return crystalline#mode() . crystalline#right_mode_sep('')
+    \ . ' %f%h%w%m%r %{fugitive#head()} %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    \ . '%{coc#status()}%{get(b:,"coc_current_function","")}'
+    \ . '%=%#Crystalline# %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}]'
+endfunction
+let g:crystalline_statusline_fn = 'StatusLine'
+set laststatus=2
+" Status bar end

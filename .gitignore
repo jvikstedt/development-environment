@@ -1,3 +1,4 @@
 .vagrant
 *.log
 dotfiles/vim/init.vim
+dotfiles/vim/.netrwhist
