@@ -9,7 +9,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -18,7 +17,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax highlighting
@@ -124,10 +122,6 @@ set nostartofline
 " Search for word under cursor
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 
-" disable vim-go :GoDef short cut (gd)
-let g:go_def_mapping_enabled = 0
-
-" Coc.nvim
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -142,6 +136,24 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+" Status bar (vim-crystalline)
+function! StatusLine(...)
+  return crystalline#mode() . crystalline#right_mode_sep('')
+    \ . ' %f%h%w%m%r %{fugitive#head()} %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    \ . '%{coc#status()}%{get(b:,"coc_current_function","")}'
+    \ . '%=%#Crystalline# %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}]'
+endfunction
+let g:crystalline_statusline_fn = 'StatusLine'
+set laststatus=2
+" Status bar end
+
+
+
+"###### COC.nvim #######
+
+"Extensions being used
+"CocInstall coc-eslint coc-explorer coc-json coc-marketplace coc-prettier coc-tsserver coc-vetur
 
 " Trigger autcomplete
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -177,13 +189,7 @@ nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
 
-" Status bar
-function! StatusLine(...)
-  return crystalline#mode() . crystalline#right_mode_sep('')
-    \ . ' %f%h%w%m%r %{fugitive#head()} %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-    \ . '%{coc#status()}%{get(b:,"coc_current_function","")}'
-    \ . '%=%#Crystalline# %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}]'
-endfunction
-let g:crystalline_statusline_fn = 'StatusLine'
-set laststatus=2
-" Status bar end
+" Explorer
+nmap <space>e :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+" Explorer end
