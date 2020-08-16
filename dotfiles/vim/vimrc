@@ -9,7 +9,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'rbong/vim-crystalline'
 
-Plug 'lifepillar/vim-gruvbox8'
+Plug 'morhetz/gruvbox'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -26,7 +26,7 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-colorscheme gruvbox8
+colorscheme gruvbox
 
 " Map leader key to space
 noremap <Space> <NOP>
