@@ -35,6 +35,7 @@
   },
   "explorer.width": 30,
   "explorer.previewAction.onHover": false,
+  "explorer.file.autoReveal": false,
   "explorer.keyMappings": {
     "v": "open:vsplit",
     "<cr>": [
