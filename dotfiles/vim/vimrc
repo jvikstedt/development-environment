@@ -7,7 +7,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'rbong/vim-crystalline'
 
 Plug 'morhetz/gruvbox'
 
@@ -137,18 +136,28 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-" Status bar (vim-crystalline)
-function! StatusLine(...)
-  return crystalline#mode() . crystalline#right_mode_sep('')
-    \ . ' %f%h%w%m%r %{fugitive#head()} %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-    \ . '%{coc#status()}%{get(b:,"coc_current_function","")}'
-    \ . '%=%#Crystalline# %{&ft}[%{&fenc!=#""?&fenc:&enc}][%{&ff}]'
+" Status bar
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
-let g:crystalline_statusline_fn = 'StatusLine'
-set laststatus=2
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%R                              " readonly flag
+set statusline+=%M                              " modified [+] flag
+set statusline+=%#Cursor#                       " colour
+set statusline+=%#CursorLine#                   " colour
+set statusline+=\ %t\                           " short file name
+set statusline+=%{StatuslineGit()}              " git branch
+set statusline+=%=                              " right align
+set statusline+=%#CursorLine#                   " colour
+set statusline+=\ %y\                           " file type
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 " Status bar end
-
-
 
 "###### COC.nvim #######
 
