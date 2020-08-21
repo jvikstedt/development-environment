@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 Plug 'morhetz/gruvbox'
 
@@ -32,6 +33,9 @@ noremap <Space> <NOP>
 let mapleader = " "
 
 map <S-k> <Nop>
+
+" NERDTree
+map <Leader>e :NERDTreeToggle<CR>
 
 " Gitgutter
 let g:gitgutter_realtime = 0
@@ -197,8 +201,3 @@ nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
-
-" Explorer
-nmap <space>e :CocCommand explorer<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-" Explorer end
