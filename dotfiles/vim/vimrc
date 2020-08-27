@@ -156,7 +156,7 @@ set statusline+=%R                              " readonly flag
 set statusline+=%M                              " modified [+] flag
 set statusline+=%#Cursor#                       " colour
 set statusline+=%#CursorLine#                   " colour
-set statusline+=\ %t\                           " short file name
+set statusline+=\ %f\                           " relative file name
 set statusline+=%{StatuslineGit()}              " git branch
 set statusline+=%=                              " right align
 set statusline+=%#CursorLine#                   " colour
