@@ -6,6 +6,7 @@
     "javascript",
     "vue"
   ],
+  "eslint.run": "onSave",
   "languageserver": {
     "golang": {
       "command": "gopls",
