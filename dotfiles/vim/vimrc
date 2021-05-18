@@ -2,6 +2,8 @@ let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
 let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 let g:node_host_prog = expand('~/.nvm/versions/node/v14.10.1/bin/neovim-node-host')
 
+let g:polyglot_disabled = ['vue']
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-repeat'
@@ -22,6 +24,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'leafOfTree/vim-vue-plugin'
 
 call plug#end()
 
@@ -205,3 +208,6 @@ let g:tmux_navigator_disable_when_zoomed = 1
 
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_use_typescript = 1
