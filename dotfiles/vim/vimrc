@@ -1,8 +1,6 @@
 let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
 let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
-let g:node_host_prog = expand('~/.nvm/versions/node/v14.10.1/bin/neovim-node-host')
-
-let g:polyglot_disabled = ['vue']
+let g:node_host_prog = expand('~/.nvm/versions/node/v16.4.2/bin/neovim-node-host')
 
 call plug#begin('~/.vim/plugged')
 
@@ -12,7 +10,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'morhetz/gruvbox'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'sainnhe/gruvbox-material'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -21,16 +20,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
-Plug 'leafOfTree/vim-vue-plugin'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
-" Colorscheme
+if has('termguicolors')
+  set termguicolors
+endif
 set background=dark
-colorscheme gruvbox
+let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
 
 " Map leader key to space
 noremap <Space> <NOP>
@@ -209,5 +208,13 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-let g:vim_vue_plugin_load_full_syntax = 1
-let g:vim_vue_plugin_use_typescript = 1
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
