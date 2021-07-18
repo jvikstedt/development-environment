@@ -30,6 +30,7 @@ if has('termguicolors')
 endif
 set background=dark
 let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_visual = 'reverse'
 colorscheme gruvbox-material
 
 " Map leader key to space
