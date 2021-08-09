@@ -2,6 +2,9 @@ let g:python_host_prog = expand('~/.pyenv/versions/neovim2/bin/python')
 let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 let g:node_host_prog = expand('~/.nvm/versions/node/v16.4.2/bin/neovim-node-host')
 
+syntax enable
+filetype plugin indent on
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-repeat'
@@ -22,6 +25,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -220,3 +224,5 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+let g:rustfmt_autosave = 1

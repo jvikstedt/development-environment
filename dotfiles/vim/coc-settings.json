@@ -6,6 +6,9 @@
     "javascript",
     "vue"
   ],
+  "rust-analyzer.diagnostics.disabled": ["mismatched-arg-count"],
+  "rust-analyzer.inlayHints.enable": false,
+  "coc.preferences.semanticTokensHighlights": false,
   "eslint.run": "onSave",
   "languageserver": {
     "golang": {
