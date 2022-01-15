@@ -8,6 +8,7 @@
   ],
   "rust-analyzer.diagnostics.disabled": ["mismatched-arg-count"],
   "rust-analyzer.inlayHints.enable": false,
+  "rust-analyzer.checkOnSave.command": "clippy",
   "coc.preferences.semanticTokensHighlights": false,
   "eslint.run": "onSave",
   "languageserver": {
