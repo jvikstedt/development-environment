@@ -1,18 +1,18 @@
 - name: Install nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   args:
     creates: ~/.nvm
 
-- name: Install node 12.13.1
+- name: Install node 16.15.0
   shell: |
     export NVM_DIR=$HOME/.nvm
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    nvm install 12.13.1
+    nvm install 16.15.0
   args:
-    creates: ~/.nvm/versions/node/v12.13.1
+    creates: ~/.nvm/versions/node/v16.15.0
 
-- name: Set node 12.13.1 as default
+- name: Set node 16.15.0 as default
   shell: |
     export NVM_DIR=$HOME/.nvm
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    nvm alias default 12.13.1
+    nvm alias default 16.15.0

@@ -1,5 +1,5 @@
 #!/bin/bash
-PYTHON_VERSION=${PYTHON_VERSION:=3.6.6}
+PYTHON_VERSION=${PYTHON_VERSION:=3.10.14}
 
 if ! [ -x "$(command -v ansible-playbook)" ]; then
   echo "Could not find command ansible-playbook, trying to source pyenv"
