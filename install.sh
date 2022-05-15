@@ -1,5 +1,5 @@
 #!/bin/bash
-PYTHON_VERSION=${PYTHON_VERSION:=3.10.14}
+PYTHON_VERSION=${PYTHON_VERSION:=3.10.4}
 
 if ! [ -x "$(command -v ansible-playbook)" ]; then
   echo "Could not find command ansible-playbook, trying to source pyenv"
@@ -16,7 +16,7 @@ if ! [ -x "$(command -v ansible-playbook)" ]; then
 
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+    xz-utils tk-dev libffi-dev liblzma-dev  git
 
     if [ ! -d "$HOME/.pyenv" ]; then
       echo "$HOME/.pyenv folder does not exist, installing..."

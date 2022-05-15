@@ -46,7 +46,7 @@
 
 - name: Create virtualenv for neovim3
   shell: |
-    pyenv virtualenv 3.10.14 neovim3
+    pyenv virtualenv 3.10.4 neovim3
   args:
     creates: ~/.pyenv/versions/neovim3
 
