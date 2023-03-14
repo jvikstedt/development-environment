@@ -18,6 +18,11 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
     use 'ellisonleao/gruvbox.nvim'
 
     use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
