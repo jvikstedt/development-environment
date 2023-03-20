@@ -18,6 +18,12 @@ lsp.configure('lua-language-server', {
     }
 })
 
+lsp.format_on_save({
+  servers = {
+    ['lua_ls'] = {'lua'},
+    ['rust_analyzer'] = {'rust'},
+  }
+})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -61,7 +67,3 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
-vim.diagnostic.config({
-    virtual_text = true
-})
